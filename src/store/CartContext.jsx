@@ -1,4 +1,4 @@
-import { act, createContext, useReducer } from "react";
+import { createContext, useReducer } from "react";
 const CartContext = createContext({
     items:[],
     addItem:(item)=>{},
@@ -25,7 +25,7 @@ function cartReducer(state,action){
         const existingCartItemIndex = state.items.findIndex(item=>item.id === action.id);
         const existingCartItem = state.items[existingCartItemIndex];
         if(existingCartItem.quantity === 1){
-            const updatedItems = state.items.filter(item=>item.id !== action.item.id);
+            const updatedItems = state.items.filter(item=>item.id !== action.id);
             return {...state, items: updatedItems};
         }else{
             const updatedItem = {...existingCartItem, quantity: existingCartItem.quantity - 1};
