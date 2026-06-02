@@ -5,6 +5,7 @@ import { formatCurrency } from "../util/currencyFormatter";
 import CartContext from "../store/CartContext";
 import UserProgressContext from "../store/UserProgressContext";
 import CartItem from "./CartItem";
+import { use } from "react";
 
 export default function Cart() {
   const cartCtx = useContext(CartContext);
@@ -15,8 +16,15 @@ export default function Cart() {
   function hideCart() {
     userProgressCtx.hideCart();
   }
+  function handleGoToCheckout() {
+    userProgressCtx.showCheckout();
+  }
   return (
-    <Modal className="cart" open={userProgressCtx.progress === "cart"}>
+    <Modal
+      className="cart"
+      open={userProgressCtx.progress === "cart"}
+      onClose={userProgressCtx.progress === "cart" ? hideCart : null}
+    >
       <h2>Your Cart</h2>
       <ul>
         {cartCtx.items.map((item) => (
@@ -35,7 +43,9 @@ export default function Cart() {
         <Button textOnly onClick={hideCart}>
           Close
         </Button>
-        <Button onClick={hideCart}>Go To Checkout</Button>
+        {cartCtx.items.length > 0 && (
+          <Button onClick={handleGoToCheckout}>Go To Checkout</Button>
+        )}
       </p>
     </Modal>
   );
