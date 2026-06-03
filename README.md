@@ -12,7 +12,7 @@
 
 Browse meals, manage your cart, and place orders through a seamless checkout experience powered by React, Context API, Reducers, and Custom Hooks.
 
-🌐 **Live Demo:** https://food-order-app-react-frontend.onrender.com/
+🌐 **Live Demo:** https://tinyurl.com/mttfzjsk
 
 </div>
 
