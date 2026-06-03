@@ -3,7 +3,7 @@ import MealItem from "./MealItem";
 import Error from "./Error";
 const requestConfig = {};
 export default function Meals() {
-  const{data:loadedmeals,isLoading,error}=useHttp('http://localhost:3000/meals', requestConfig, []);
+  const{data:loadedmeals,isLoading,error}=useHttp('https://food-order-app-react-yyjh.onrender.com/meals', requestConfig, []);
   if(isLoading){
     return <p className="center">Loading...</p>
   }
